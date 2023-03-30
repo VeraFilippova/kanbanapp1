@@ -1,4 +1,4 @@
-
+import { Component } from 'react';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import StatusBlock from '../statusblock/statusblock';
@@ -8,6 +8,7 @@ import './substrate.css';
 import './app.css';
 
 import { useState } from 'react';
+import CreateTaskForm from '../createTaskForm/createTaskForm';
 
 
 const taskStatus = ['todo', 'progress', 'rewive', 'done'];
@@ -35,7 +36,7 @@ function App(){
    
       
       
-
+<CreateTaskForm/>
       <Footer/>
 
     </div>

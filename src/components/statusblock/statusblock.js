@@ -1,15 +1,13 @@
 import { useState } from "react";
 import "./statusblock.css";
 import "./card.css";
+import CreateTaskForm from "../createTaskForm/createTaskForm";
+
 
 
 const StatusBlock = (props) => {
   const currentStatus = props.status;
-  const [title, setTitle] = useState('');
-  
-  const onSubmit = () => {
-    console.log(4444);
-  };
+  const [title, setTitle] = useState([])
 
   return (
     <div className="statusblock">
@@ -36,11 +34,15 @@ const StatusBlock = (props) => {
         </div>
       </div>
 
-      {currentStatus==="todo" &&(
+      {/* {currentStatus==="todo" &&(
       <form >
       <input type="text" id='title' value={title} onChange={e=>setTitle(e.target.value)} />
       <button onClick={onSubmit}>Submit</button>
       </form>
+      )} */}
+
+      {currentStatus==='todo' &&(
+        <CreateTaskForm />
       )}
 
       
