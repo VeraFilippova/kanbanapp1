@@ -1,24 +1,38 @@
-import { useState } from "react";
+
 import "./statusblock.css";
 import "./card.css";
 import CreateTaskForm from "../createTaskForm/createTaskForm";
+import { Component } from "react";
+import ListItem from "../listItem/listItem";
 
 
 
 const StatusBlock = (props) => {
   const currentStatus = props.status;
-  const [title, setTitle] = useState([])
-
+  const addItem= props.addItem;
+  
   return (
+
     <div className="statusblock">
       <h3>{props.status}</h3>
-      {props.tasks
+      <ListItem  data={props.tasks} status={props.status} ></ListItem>
+
+
+      {/* {props.tasks
         .filter((task) => task.status === props.status)
         .map((task) => (
           <div className="card" key={task.id}>
             <p>{task.title}</p>
           </div>
-        ))}
+        ))} */}
+
+
+
+
+        <div>{currentStatus === "todo" && (<CreateTaskForm  ></CreateTaskForm>
+        )}</div>
+
+
 
       <div>
         <div>
@@ -33,23 +47,6 @@ const StatusBlock = (props) => {
           )}
         </div>
       </div>
-
-      {/* {currentStatus==="todo" &&(
-      <form >
-      <input type="text" id='title' value={title} onChange={e=>setTitle(e.target.value)} />
-      <button onClick={onSubmit}>Submit</button>
-      </form>
-      )} */}
-
-      {currentStatus==='todo' &&(
-        <CreateTaskForm />
-      )}
-
-      
-
-      {/* <button>Submit</button> */}
-
-     
     </div>
   );
 };

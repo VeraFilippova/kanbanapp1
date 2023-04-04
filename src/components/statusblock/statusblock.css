@@ -17,6 +17,10 @@ button{
   color: white;
 }
 
+.statusblock ul{
+  padding-left: 0px;
+}
+
 .colorRed{
   background-color: brown;
 }
