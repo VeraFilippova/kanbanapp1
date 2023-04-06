@@ -3,21 +3,11 @@ import { Component } from 'react';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import StatusBlock from '../statusblock/statusblock';
+
 import './substrate.css';
-
-
 import './app.css';
 import CreateTaskForm from '../createTaskForm/createTaskForm';
 import ListItem from '../listItem/listItem';
-
-
-
-
-
-
-
-
-
 
 
 class App extends Component{
@@ -84,8 +74,14 @@ onToggleStatus=(id)=>{
 
   this.setState(({data})=>({
     data: data.map(item=>{
-      if(item.id===id){
+      if((item.id===id) && (item.status=='todo')){
         return{...item, status:'progress'}
+      }
+      if((item.id===id) && (item.status=='progress')){
+        return{...item, status:'rewive'}
+      }
+      if((item.id===id) && (item.status=='rewive')){
+        return{...item, status:'done'}
       }
       return item;
     })
@@ -139,17 +135,7 @@ render(){
 
     </div>
   );
-  
-
 }
-
-
-
-
 }
-
-
-
-
 
 export default App;
