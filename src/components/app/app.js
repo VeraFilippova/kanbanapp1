@@ -76,7 +76,10 @@ class App extends Component {
     const taskStatus = ["Backlog", "Ready", "In progress", "Finished"];
     const addItemProps = this.addItem;
 
-    const activeTask = this.state.data.length;
+    const activeTask = this.state.data.filter(
+      (item) => item.status === "Backlog"
+    ).length;
+
     const doneTask = this.state.data.filter(
       (item) => item.status === "Finished"
     ).length;
