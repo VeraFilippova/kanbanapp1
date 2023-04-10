@@ -13,13 +13,13 @@ class App extends Component {
     super(props);
     this.state = {
       data: [
-        { id: 1, title: "купить молоко", status: "todo" },
-        { id: 2, title: "погулять с собакой", status: "todo" },
-        { id: 3, title: "сделать д/з", status: "progress" },
-        { id: 4, title: "сходить в зал", status: "progress" },
-        { id: 5, title: "помыть посуду", status: "todo" },
-        { id: 6, title: "отправить письмо", status: "rewive" },
-        { id: 7, title: "посмотреть фильм", status: "done" },
+        { id: 1, title: "купить молоко", status: "Backlog" },
+        { id: 2, title: "погулять с собакой", status: "Backlog" },
+        { id: 3, title: "сделать д/з", status: "Ready" },
+        { id: 4, title: "сходить в зал", status: "Ready" },
+        { id: 5, title: "помыть посуду", status: "Backlog" },
+        { id: 6, title: "отправить письмо", status: "In progress" },
+        { id: 7, title: "посмотреть фильм", status: "Finished" },
       ],
     };
 
@@ -29,7 +29,7 @@ class App extends Component {
   addItem = (title) => {
     const newItem = {
       title,
-      status: "todo",
+      status: "Backlog",
       id: this.maxId++,
     };
     this.setState(({ data }) => {
@@ -56,14 +56,14 @@ class App extends Component {
 
     this.setState(({ data }) => ({
       data: data.map((item) => {
-        if (item.id === id && item.status == "todo") {
-          return { ...item, status: "progress" };
+        if (item.id === id && item.status == "Backlog") {
+          return { ...item, status: "Ready" };
         }
-        if (item.id === id && item.status == "progress") {
-          return { ...item, status: "rewive" };
+        if (item.id === id && item.status == "Ready") {
+          return { ...item, status: "In progress" };
         }
-        if (item.id === id && item.status == "rewive") {
-          return { ...item, status: "done" };
+        if (item.id === id && item.status == "In progress") {
+          return { ...item, status: "Finished" };
         }
         return item;
       }),
@@ -73,12 +73,12 @@ class App extends Component {
 
 
   render() {
-    const taskStatus = ["todo", "progress", "rewive", "done"];
+    const taskStatus = ["Backlog", "Ready", "In progress", "Finished"];
     const addItemProps = this.addItem;
 
     const activeTask = this.state.data.length;
     const doneTask = this.state.data.filter(
-      (item) => item.status === "done"
+      (item) => item.status === "Finished"
     ).length;
 
     return (

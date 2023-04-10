@@ -19,12 +19,12 @@ const StatusBlock = (props) => {
   return (
     <div className="statusblock">
       <h3>{props.status}</h3>
-      {/* Board todo */}
+      {/* Board Backlog */}
       <div>
-        {currentStatus === "todo" && (
+        {currentStatus === "Backlog" && (
           <ul>
             {props.tasks
-              .filter((item) => item.status === "todo")
+              .filter((item) => item.status === "Backlog")
               .map((task) => (
                 <li className="card" key={task.id} value={task.title}>
                   <div>
@@ -39,12 +39,12 @@ const StatusBlock = (props) => {
         )}
       </div>
 
-      {/* Board progress */}
+      {/* Board Ready */}
       <div>
-        {currentStatus === "progress" && (
+        {currentStatus === "Ready" && (
           <ul>
             {props.tasks
-              .filter((item) => item.status === "progress")
+              .filter((item) => item.status === "Ready")
 
               .map((task) => (
                 <li className="card" key={task.id} value={task.title}>
@@ -54,13 +54,13 @@ const StatusBlock = (props) => {
           </ul>
         )}
       </div>
-      {/* Board rewive */}
+      {/* Board In progress */}
 
       <div>
-        {currentStatus === "rewive" && (
+        {currentStatus === "In progress" && (
           <ul>
             {props.tasks
-              .filter((item) => item.status === "rewive")
+              .filter((item) => item.status === "In progress")
 
               .map((task) => (
                 <li className="card" key={task.id} value={task.title}>
@@ -71,13 +71,13 @@ const StatusBlock = (props) => {
         )}
       </div>
 
-      {/* Board done */}
+      {/* Board Finished */}
 
       <div>
-        {currentStatus === "done" && (
+        {currentStatus === "Finished" && (
           <ul>
             {props.tasks
-              .filter((item) => item.status === "done")
+              .filter((item) => item.status === "Finished")
 
               .map((task) => (
                 <li className="card" key={task.id} value={task.title}>
@@ -91,16 +91,16 @@ const StatusBlock = (props) => {
       {/* form addTask */}
 
       <div>
-        {currentStatus === "todo" && (
+        {currentStatus === "Backlog" && (
           <CreateTaskForm addItem={props.addItem}></CreateTaskForm>
         )}
       </div>
 
-      {/* select progress */}
+      {/* select Ready */}
 
       <div>
         <div className="select-style">
-          {currentStatus === "progress" && (
+          {currentStatus === "Ready" && (
             <div>
               <form onSubmit={newStatus}>
                 <select
@@ -110,7 +110,7 @@ const StatusBlock = (props) => {
                   }
                 >
                   {props.tasks
-                    .filter((item) => item.status === "todo")
+                    .filter((item) => item.status === "Backlog")
                     .map((task) => (
                       <option
                         key={task.id}
@@ -128,10 +128,10 @@ const StatusBlock = (props) => {
           )}
         </div>
       </div>
-      {/* select rewive */}
+      {/* select In progress */}
       <div>
         <div className="select-style">
-          {currentStatus === "rewive" && (
+          {currentStatus === "In progress" && (
             <div>
               <form onSubmit={newStatus}>
                 <select
@@ -141,7 +141,7 @@ const StatusBlock = (props) => {
                   }
                 >
                   {props.tasks
-                    .filter((item) => item.status === "progress")
+                    .filter((item) => item.status === "Ready")
                     .map((task) => (
                       <option
                         key={task.id}
@@ -159,11 +159,11 @@ const StatusBlock = (props) => {
           )}
         </div>
       </div>
-      {/* select done */}
+      {/* select Finished */}
 
       <div>
         <div>
-          {currentStatus === "done" && (
+          {currentStatus === "Finished" && (
             <div className="select-style">
               <form onSubmit={newStatus}>
                 <select
@@ -173,7 +173,7 @@ const StatusBlock = (props) => {
                   }
                 >
                   {props.tasks
-                    .filter((item) => item.status === "rewive")
+                    .filter((item) => item.status === "In progress")
                     .map((task) => (
                       <option
                         key={task.id}
