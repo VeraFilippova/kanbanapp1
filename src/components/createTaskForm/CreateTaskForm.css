@@ -1,0 +1,12 @@
+form{
+  width: 100%;
+}
+
+form input{
+  width: 100%;
+  text-decoration: underline;
+  padding: 5px 15px;
+  margin-bottom: 10px;
+  border:none;
+  border-radius: 5px;
+}

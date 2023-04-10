@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Component } from "react";
+import "./CreateTaskForm.css";
 
 class CreateTaskForm extends Component {
   constructor(props) {
@@ -7,7 +8,6 @@ class CreateTaskForm extends Component {
     this.state = {
       title: "",
       status: "todo",
-      
     };
   }
   onValueChange = (e) => {
@@ -27,7 +27,7 @@ class CreateTaskForm extends Component {
     const { title, status } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="input-style" onSubmit={this.onSubmit}>
         <input
           type="text"
           placeholder="add task"

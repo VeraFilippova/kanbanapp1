@@ -2,9 +2,7 @@ import "./statusblock.css";
 import "./card.css";
 import CreateTaskForm from "../createTaskForm/createTaskForm";
 import { Component, useState } from "react";
-import ListItem from "../listItem/listItem";
 import CardTask from "../cardTask/cardTask";
-import SelectTask from "../selectTask/selectTask";
 
 const StatusBlock = (props) => {
   const currentStatus = props.status;
@@ -21,6 +19,7 @@ const StatusBlock = (props) => {
   return (
     <div className="statusblock">
       <h3>{props.status}</h3>
+      {/* Board todo */}
       <div>
         {currentStatus === "todo" && (
           <ul>
@@ -39,6 +38,8 @@ const StatusBlock = (props) => {
           </ul>
         )}
       </div>
+
+      {/* Board progress */}
       <div>
         {currentStatus === "progress" && (
           <ul>
@@ -53,6 +54,7 @@ const StatusBlock = (props) => {
           </ul>
         )}
       </div>
+      {/* Board rewive */}
 
       <div>
         {currentStatus === "rewive" && (
@@ -69,6 +71,8 @@ const StatusBlock = (props) => {
         )}
       </div>
 
+      {/* Board done */}
+
       <div>
         {currentStatus === "done" && (
           <ul>
@@ -84,22 +88,20 @@ const StatusBlock = (props) => {
         )}
       </div>
 
+      {/* form addTask */}
+
       <div>
         {currentStatus === "todo" && (
           <CreateTaskForm addItem={props.addItem}></CreateTaskForm>
         )}
       </div>
 
+      {/* select progress */}
+
       <div>
-        <div>
+        <div className="select-style">
           {currentStatus === "progress" && (
             <div>
-              {/* <SelectTask 
-              addNewStatus={props.addNewStatus}
-              tasks={props.data} 
-              status={props.status} 
-            
-             ></SelectTask> */}
               <form onSubmit={newStatus}>
                 <select
                   value={value}
@@ -120,24 +122,17 @@ const StatusBlock = (props) => {
                       </option>
                     ))}
                 </select>
-                <button type="submit">submit</button>
+                <button type="submit">Submit</button>
               </form>
-              <div> выбрано поле {value}</div>
             </div>
           )}
         </div>
       </div>
-
+      {/* select rewive */}
       <div>
-        <div>
+        <div className="select-style">
           {currentStatus === "rewive" && (
             <div>
-              {/* <SelectTask 
-              addNewStatus={props.addNewStatus}
-              tasks={props.data} 
-              status={props.status} 
-            
-             ></SelectTask> */}
               <form onSubmit={newStatus}>
                 <select
                   value={value}
@@ -158,24 +153,18 @@ const StatusBlock = (props) => {
                       </option>
                     ))}
                 </select>
-                <button type="submit">submit</button>
+                <button type="submit">Submit</button>
               </form>
-              <div> выбрано поле {value}</div>
             </div>
           )}
         </div>
       </div>
+      {/* select done */}
 
       <div>
         <div>
           {currentStatus === "done" && (
-            <div>
-              {/* <SelectTask 
-              addNewStatus={props.addNewStatus}
-              tasks={props.data} 
-              status={props.status} 
-            
-             ></SelectTask> */}
+            <div className="select-style">
               <form onSubmit={newStatus}>
                 <select
                   value={value}
@@ -196,9 +185,8 @@ const StatusBlock = (props) => {
                       </option>
                     ))}
                 </select>
-                <button type="submit">submit</button>
+                <button type="submit">Submit</button>
               </form>
-              <div> выбрано поле {value}</div>
             </div>
           )}
         </div>
